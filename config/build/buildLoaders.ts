@@ -7,5 +7,14 @@ export const buildLoaders = (): RuleSetRule[] => {
     exclude: /node_modules/,
   };
 
-  return [typescriptLoader];
+  const cssLoader = {
+    test: /\.(sa|sc|c)ss$/,
+    use: [
+      "style-loader", // Injects styles into DOM
+      "css-loader", // Translates CSS into CommonJS
+      "sass-loader", // Compiles Sass to CSS, using Node Sass by default
+    ],
+  };
+
+  return [typescriptLoader, cssLoader];
 };
