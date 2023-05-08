@@ -17,8 +17,8 @@ export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
         loader: "css-loader",
         options: {
           modules: {
-            auto: (resourcePath: string) =>
-              Boolean(resourcePath.includes(".module.")),
+            namedExport: true,
+            auto: (resourcePath: string) => resourcePath.includes(".module."),
             localIdentName: options.isDev
               ? "[path][name]___[local]"
               : "[hash:base64:8]",
